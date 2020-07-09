@@ -1,9 +1,19 @@
 import React, { useState } from "react";
-
+import Error from "./Error.jsx";
 const Form = () => {
   const [term, saveTerm] = useState("");
+  const [error, saveError] = useState(false);
+  const searchImage = (e) => {
+    e.preventDefault();
+    // validar
+    if (term.trim() === "") {
+      saveError(true);
+      return;
+    }
+    saveError(false);
+  };
   return (
-    <form>
+    <form onSubmit={searchImage}>
       <div className="row">
         <div className="form-group col-md-8">
           <input
@@ -21,6 +31,7 @@ const Form = () => {
           />
         </div>
       </div>
+      {error ? <Error message="Agrega un termino de busqueda" /> : null}
     </form>
   );
 };
