@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 
 const Form = () => {
+  const [term, saveTerm] = useState("");
   return (
     <form>
       <div className="row">
@@ -9,6 +10,7 @@ const Form = () => {
             type="text"
             className="form-control form-control-lg"
             placeholder="Busca una imagen, ejemplo: futbol o café"
+            onChange={(e) => saveTerm(e.target.value)}
           />
         </div>
         <div className="form-group col-md-4">
