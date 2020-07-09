@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import Error from "./Error.jsx";
-const Form = () => {
+const Form = ({ saveSearch }) => {
   const [term, saveTerm] = useState("");
+  //validando el error
   const [error, saveError] = useState(false);
   const searchImage = (e) => {
     e.preventDefault();
@@ -11,6 +12,7 @@ const Form = () => {
       return;
     }
     saveError(false);
+    saveSearch(term);
   };
   return (
     <form onSubmit={searchImage}>
